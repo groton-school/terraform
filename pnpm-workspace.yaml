@@ -1,3 +1,5 @@
 publicHoistPattern:
-  - "@commitlint/*"
+  - '@commitlint/*'
   - commit-and-tag-version
+  - '*prettier*'
+  - '*eslint*'

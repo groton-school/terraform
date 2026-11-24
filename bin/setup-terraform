@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+import fs from 'node:fs';
+import path from 'node:path';
+import { Colors } from '@qui-cli/colors';
+import { Core, Positionals } from '@qui-cli/core';
+import { Init } from '@qui-cli/init';
+import { register } from '@qui-cli/plugin';
+
+Init.configure({
+  enclosingDirectory: false,
+  template: path.resolve(import.meta.dirname, '../template')
+});
+
+Positionals.requireAtLeast(0);
+
+const templates = fs.readdirSync(
+  path.join(import.meta.dirname, '../templates')
+);
+
+await register({
+  name: 'setup-terraform',
+  options() {
+    return {
+      opt: {
+        template: {
+          description: `Select a particular template`,
+          hint: templates.map((t) => Colors.quotedValue(`"${t}"`)).join('|'),
+          short: 't',
+          default: 'default'
+        }
+      }
+    };
+  },
+  init({ values: { template } }) {
+    const dir = path.resolve(import.meta.dirname, '../templates', template);
+    if (!fs.existsSync(dir)) {
+      throw new Error(`Invalid template ${Colors.value(template)}`);
+    }
+    Init.configure({
+      template: dir
+    });
+  }
+});
+
+await Core.run();

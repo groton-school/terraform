@@ -5,6 +5,8 @@
   "private": true,
   "devDependencies": {
     "@battis/commit": "^0.0.11",
+    "@battis/eslint": "^3.0.8",
+    "@battis/prettier": "^2.0.11",
     "@battis/workspace": "^0.0.12"
   },
   "directories": {
@@ -13,5 +15,14 @@
   "packageManager": "pnpm@12.23.0+sha512.02da94ffaf133f46074322afe552f90d40b5f71ae259aefbccdacc5085b1d617e98d65e0131f5748b9b67445978ee5055d7d59a473f1eef0d504854fefcd5975",
   "scripts": {
     "release": "commit-and-tag-version --noBumpWhenEmptyChanges"
+  },
+  "dependencies": {
+    "@qui-cli/colors": "^3.2.5",
+    "@qui-cli/core": "^7.1.0",
+    "@qui-cli/init": "^2.0.1",
+    "@qui-cli/plugin": "^4.2.0"
+  },
+  "peerDependencies": {
+    "turbo": "^2.11.13"
   }
 }
