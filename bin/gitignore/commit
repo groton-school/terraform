@@ -1,0 +1,11 @@
+.env
+!.env.example
+**/.terraform/
+**/.turbo/
+**/build/
+**/dist/
+**/node_modules/
+*.log
+*.tfstate
+*.tfstate.*
+/out/

@@ -1,0 +1,12 @@
+.*
+!.gcloudignore
+*.log
+*.md
+*.tfstate
+*.tfstate.*
+**/build/
+**/dist/
+**/eslint.config.mjs
+**/node_modules/
+/out/
+/scripts/
