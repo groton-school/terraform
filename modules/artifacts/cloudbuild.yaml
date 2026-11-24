@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/k8s-skaffold/pack'
+    entrypoint: 'pack'
+    args:
+      - 'build'
+      - '${_IMAGE}'
+      - '--builder=gcr.io/buildpacks/builder:latest'
+      - '--cache-image=${_CACHE_IMAGE}'
+      - '--path=.'
+      - '--publish'
+
+options:
+  machineType: 'E2_HIGHCPU_8'
+  logging: CLOUD_LOGGING_ONLY
