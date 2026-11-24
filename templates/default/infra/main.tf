@@ -21,13 +21,13 @@ locals {
 
 
 module "project" {
-  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/project?ref=v1.0.0"
+  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/project?ref=v1.1.0"
 
   project_id = var.project_id
 }
 
 module "artifacts" {
-  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/artifacts?ref=v1.0.0"
+  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/artifacts?ref=v1.1.0"
 
   project_id  = module.project.project_id
   region      = module.database.region
@@ -36,7 +36,7 @@ module "artifacts" {
 }
 
 module "runners" {
-  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/runners?ref=v1.0.0"
+  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/runners?ref=v1.1.0"
 
   project_id = module.project.project_id
   services   = keys(local.services)
@@ -52,7 +52,7 @@ locals {
 }
 
 module "app" {
-  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/service?ref=v1.0.0"
+  source = "git::ssh://git@github.com/groton-school/terraform.git//modules/service?ref=v1.1.0"
 
   project_id      = module.project.project_id
   region          = module.database.region
