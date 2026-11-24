@@ -1,0 +1,4 @@
+#!/bin/sh
+
+gcloud auth print-access-token >/dev/null 2>&1 || \
+    gcloud auth login
